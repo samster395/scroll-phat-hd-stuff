@@ -7,7 +7,7 @@ from scrollphathd.fonts import font5x5
 from scrollphathd.fonts import font3x5
 import json
 import httplib2 # Do 'pip install httplib2' - Used to cache the data - https://github.com/httplib2/httplib2
-h = httplib2.Http(".cache")
+h = httplib2.Http("cache")
 
 button = Button(17)
 button2 = Button(27)
@@ -68,9 +68,8 @@ def ButtonDectector():
             time.sleep(1)
 
         elif button2.is_pressed:
-            print("Button 2 pressed")
-            #pid = os.getpid()
-            #os.system("kill -9 " + str(pid))
+            print("Button 2 pressed, Powering off system")
+            os.system("sudo poweroff")
             time.sleep(1)
 
 def ClockLoop():

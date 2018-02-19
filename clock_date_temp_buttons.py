@@ -23,15 +23,15 @@ UNITS = "metric" # metric or imperial
 CACHE_TIME = "1800" # How long to cache the temp data in seconds, default is 30 minutes
 
 def clock():
-        scrollphathd.clear()
-        scrollphathd.write_string(time.strftime("%H:%M"), x=0, y=1, font=font5x5, letter_spacing=1, brightness=BRIGHTNESS)
-        scrollphathd.show()
-        time.sleep(1)
+    scrollphathd.clear()
+    scrollphathd.write_string(time.strftime("%H:%M"), x=0, y=1, font=font5x5, letter_spacing=1, brightness=BRIGHTNESS)
+    scrollphathd.show()
+    time.sleep(1)
 	
 def date():
     scrollphathd.clear()
     scrollphathd.write_string(time.strftime("%d"), x=0, y=1, font=font3x5, letter_spacing=1, brightness=BRIGHTNESS)
-    scrollphathd.set_pixel(8, 3, BRIGHTNESS)
+    scrollphathd.fill(BRIGHTNESS, x=8, y=0, width=1, height=7)
     scrollphathd.write_string(time.strftime("%m"), x=10, y=1, font=font3x5, letter_spacing=1, brightness=BRIGHTNESS)
     scrollphathd.show()
 	

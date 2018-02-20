@@ -38,7 +38,7 @@ def date():
 def temp():
 	scrollphathd.clear()
 	(resp_headers, content) = h.request("http://api.openweathermap.org/data/2.5/weather?id=" + CITY_ID + "&appid=" + OPENWEATHER_APIKEY + "&units=" + UNITS, "GET", headers={'cache-control':'max-age=' + CACHE_TIME})
-	data = json.loads(content)
+	data = json.loads(content.decode('utf-8'))
 	t = str(data['main']['temp'])
 	tt = float(t)
 	if UNITS == "imperial" :

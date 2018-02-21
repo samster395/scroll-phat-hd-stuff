@@ -3,11 +3,10 @@ import time
 import os
 from gpiozero import Button
 import scrollphathd
-from scrollphathd.fonts import font5x5
 from scrollphathd.fonts import font3x5
 import json
 import httplib2 # Do 'pip install httplib2' - Used to cache the data - https://github.com/httplib2/httplib2
-h = httplib2.Http("cache")
+h = httplib2.Http("/home/pi/clock/cache") # Edit this path accordingly,  it would be a good idea to make this a tmpfs folder to extend the life of your sd card
 
 button = Button(17)
 button2 = Button(27)
@@ -24,7 +23,7 @@ CACHE_TIME = "1800" # How long to cache the temp data in seconds, default is 30 
 
 def clock():
     scrollphathd.clear()
-    scrollphathd.write_string(time.strftime("%H:%M"), x=0, y=1, font=font5x5, letter_spacing=1, brightness=BRIGHTNESS)
+    scrollphathd.write_string(time.strftime("%H:%M"), x=0, y=1, font=font3x5, letter_spacing=1, brightness=BRIGHTNESS)
     scrollphathd.show()
     time.sleep(1)
 	

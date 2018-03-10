@@ -1,4 +1,5 @@
-import time	#returns time values
+from datetime import datetime
+import time
 import scrollphathd
 from scrollphathd.fonts import font3x5
 import json
@@ -10,6 +11,18 @@ CITY_ID = "" # Find your city here http://openweathermap.org/ and copy the city 
 OPENWEATHER_APIKEY = "" # Get your API Key here http://openweathermap.org/appid
 UNITS = "metric" # metric or imperial
 CACHE_TIME = "1800" # How long to cache the temp data in seconds, default is 30 minutes
+SLPFunc = True # Set this to true if you want the clock to turn the display off between the times set below
+SLPtimeStart = '21:59'
+SLPtimeEnd = '06:59'
+
+SLPtimeStart = datetime.strptime(SLPtimeStart, "%H:%M")
+SLPtimeEnd = datetime.strptime(SLPtimeEnd, "%H:%M")
+
+def isNowInTimePeriod(startTime, endTime, nowTime):
+    if startTime < endTime:
+        return nowTime >= startTime and nowTime <= endTime
+    else: #Over midnight
+        return nowTime >= startTime or nowTime <= endTime
 
 def clock():
     scrollphathd.clear()
@@ -38,13 +51,29 @@ def temp():
 	scrollphathd.show()
 
 try:	
-	while True:
-		clock()
-		time.sleep(30)
-		date()
-		time.sleep(5)
-		temp()
-		time.sleep(5)
+    while True:
+        if SLPFunc:
+            now = datetime.now()
+            timeNow = now.strftime("%H:%M")
+            timeNow = datetime.strptime(timeNow, "%H:%M")
+            if isNowInTimePeriod(SLPtimeStart, SLPtimeEnd, timeNow):
+                scrollphathd.clear()
+                scrollphathd.show()
+                #time.sleep(120)
+            else:
+                clock()
+                time.sleep(30)
+                date()
+                time.sleep(5)
+                temp()
+                time.sleep(5)
+        else:        
+            clock()
+            time.sleep(30)
+            date()
+            time.sleep(5)
+            temp()
+            time.sleep(5)
 except KeyboardInterrupt:
     print(' Keyboard Interrupt!')
     scrollphathd.clear()

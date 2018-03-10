@@ -63,7 +63,7 @@ def temp():
 def loop1():
     while True:
         if exitl1 == True:
-            print("loop 1 has been ended")
+            #print("loop 1 has been ended")
             time.sleep(5)
         else:
             if SLPFunc:
@@ -118,7 +118,7 @@ def loop2():
                             #ti = "  " + str(list.get('ti')).replace("'", "").replace("[", "").replace("]", "")
                             #mes = "  " + str(list.get('mes')).replace("'", "").replace("[", "").replace("]", "")
                             #when = "  " + str(list.get('when')).replace("'", "").replace("[", "").replace("]", "")
-                            print type
+                            #print type
                             global exitl1
                             #print app    
                             #print ti      
@@ -128,7 +128,7 @@ def loop2():
                             if type != 'None' :
                                 while True:
                                     exitl1 = True
-                                    print("noti received")
+                                    #print("noti received")
                                     scrollphathd.clear()
                                     scrollphathd.write_string("NOTI", x=0, y=1, font=font5x5, letter_spacing=1, brightness=BRIGHTNESS)
                                     scrollphathd.show()
@@ -180,7 +180,7 @@ def loop2():
                         #ti = "  " + str(list.get('ti')).replace("'", "").replace("[", "").replace("]", "")
                         #mes = "  " + str(list.get('mes')).replace("'", "").replace("[", "").replace("]", "")
                         #when = "  " + str(list.get('when')).replace("'", "").replace("[", "").replace("]", "")
-                        print type
+                        #print type
                         global exitl1
                         #print app    
                         #print ti      
@@ -190,7 +190,7 @@ def loop2():
                         if type != 'None' :
                             while True:
                                 exitl1 = True
-                                print("noti received")
+                                #print("noti received")
                                 scrollphathd.clear()
                                 scrollphathd.write_string("NOTI", x=0, y=1, font=font5x5, letter_spacing=1, brightness=BRIGHTNESS)
                                 scrollphathd.show()
@@ -215,17 +215,6 @@ def loop2():
                                 time.sleep(5)
                                 exitl1 = False
                                 break
-                        
-                    def do_POST(self):
-                        self._set_headers()
-                        form = cgi.FieldStorage(
-                            fp=self.rfile,
-                            headers=self.headers,
-                            environ={'REQUEST_METHOD': 'POST'}
-                        )
-                        print form.getvalue("foo")
-                        print form.getvalue("bin")
-                        self.wfile.write("<html><body><h1>POST Request Received!</h1></body></html>")
                 
                 def run(server_class=HTTPServer, handler_class=GP, port=8088):
                     server_address = ('', port)
